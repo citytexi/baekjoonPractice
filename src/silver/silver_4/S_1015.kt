@@ -25,7 +25,7 @@ class S_1015{
         list.sort()
         list.forEachIndexed { index, i ->
             if (index == 0 && i != 0){
-                list.
+                TODO("조건 넣어야함")
             }
             if (list.lastIndexOf(i) != index){
                 list[index] = i - (list.lastIndexOf(i) - index)
