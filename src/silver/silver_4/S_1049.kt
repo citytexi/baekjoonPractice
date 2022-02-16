@@ -1,5 +1,7 @@
 package silver.silver_4
 
+import java.util.*
+
 /**
  * @문제
  * Day Of Mourning의 기타리스트 강토가 사용하는 기타에서 N개의 줄이 끊어졌다.
@@ -19,8 +21,29 @@ package silver.silver_4
  **/
 
 class S_1049{
-    fun solution(){
-
+    fun solution() = with(System.`in`.bufferedReader()){
+        val (n, m) = readLine().split(" ").map { it.toInt() }
+        val packList = mutableListOf<Int>()
+        val simpleList = mutableListOf<Int>()
+        for(i in 0 until m){
+            val t = readLine().split(" ").map { it.toInt() }
+            packList.add(t[0])
+            simpleList.add(t[1])
+        }
+        packList.sort()
+        simpleList.sort()
+        var result = 0
+        if (packList[0] < simpleList[0] * 6){
+            result += packList[0] * (n / 6)
+            result += if (simpleList[0] * (n % 6) <= packList[0]) {
+                simpleList[0] * (n % 6)
+            }
+            else
+                packList[0]
+        }else{
+            result += simpleList[0] * n
+        }
+        println(result)
     }
 }
 
